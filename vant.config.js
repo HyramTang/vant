@@ -370,76 +370,76 @@ module.exports = {
               },
             ],
           },
-          {
-            title: '业务组件',
-            items: [
-              {
-                path: 'address-edit',
-                title: 'AddressEdit 地址编辑',
-                className: 'hide-in-weapp',
-              },
-              {
-                path: 'address-list',
-                title: 'AddressList 地址列表',
-                className: 'hide-in-weapp',
-              },
-              {
-                path: 'area',
-                title: 'Area 省市区选择',
-              },
-              {
-                path: 'card',
-                title: 'Card 商品卡片',
-              },
-              {
-                path: 'contact-card',
-                title: 'ContactCard 联系人卡片',
-                className: 'hide-in-weapp',
-              },
-              {
-                path: 'contact-edit',
-                title: 'ContactEdit 联系人编辑',
-                className: 'hide-in-weapp',
-              },
-              {
-                path: 'contact-list',
-                title: 'ContactList 联系人列表',
-                className: 'hide-in-weapp',
-              },
-              {
-                path: 'coupon-list',
-                title: 'Coupon 优惠券',
-                className: 'hide-in-weapp',
-              },
-              {
-                path: 'goods-action',
-                title: 'GoodsAction 商品导航',
-              },
-              {
-                path: 'submit-bar',
-                title: 'SubmitBar 提交订单栏',
-              },
-              {
-                path: 'sku',
-                title: 'Sku 商品规格',
-                className: 'hide-in-weapp',
-              },
-            ],
-          },
-          {
-            title: '废弃',
-            items: [
-              {
-                path: 'panel',
-                title: 'Panel 面板',
-              },
-              {
-                path: 'switch-cell',
-                title: 'SwitchCell 开关单元格',
-                className: 'hide-in-weapp',
-              },
-            ],
-          },
+          // {
+          //   title: '业务组件',
+          //   items: [
+          //     {
+          //       path: 'address-edit',
+          //       title: 'AddressEdit 地址编辑',
+          //       className: 'hide-in-weapp',
+          //     },
+          //     {
+          //       path: 'address-list',
+          //       title: 'AddressList 地址列表',
+          //       className: 'hide-in-weapp',
+          //     },
+          //     {
+          //       path: 'area',
+          //       title: 'Area 省市区选择',
+          //     },
+          //     {
+          //       path: 'card',
+          //       title: 'Card 商品卡片',
+          //     },
+          //     {
+          //       path: 'contact-card',
+          //       title: 'ContactCard 联系人卡片',
+          //       className: 'hide-in-weapp',
+          //     },
+          //     {
+          //       path: 'contact-edit',
+          //       title: 'ContactEdit 联系人编辑',
+          //       className: 'hide-in-weapp',
+          //     },
+          //     {
+          //       path: 'contact-list',
+          //       title: 'ContactList 联系人列表',
+          //       className: 'hide-in-weapp',
+          //     },
+          //     {
+          //       path: 'coupon-list',
+          //       title: 'Coupon 优惠券',
+          //       className: 'hide-in-weapp',
+          //     },
+          //     {
+          //       path: 'goods-action',
+          //       title: 'GoodsAction 商品导航',
+          //     },
+          //     {
+          //       path: 'submit-bar',
+          //       title: 'SubmitBar 提交订单栏',
+          //     },
+          //     {
+          //       path: 'sku',
+          //       title: 'Sku 商品规格',
+          //       className: 'hide-in-weapp',
+          //     },
+          //   ],
+          // },
+          // {
+          //   title: '废弃',
+          //   items: [
+          //     {
+          //       path: 'panel',
+          //       title: 'Panel 面板',
+          //     },
+          //     {
+          //       path: 'switch-cell',
+          //       title: 'SwitchCell 开关单元格',
+          //       className: 'hide-in-weapp',
+          //     },
+          //   ],
+          // },
         ],
       },
       'en-US': {
