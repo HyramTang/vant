@@ -12,8 +12,8 @@
     "types",
     "vetur"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+  "npm": {
+    "publish": false
   },
   "scripts": {
     "bootstrap": "yarn || npm i",
