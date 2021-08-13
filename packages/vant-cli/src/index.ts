@@ -46,6 +46,7 @@ command('clean')
 command('build')
   .description('Compile components in production mode')
   .option('--watch', 'Watch file change')
+  .option('--ci', 'Build with Azure DevOps CI')
   .action(build);
 
 command('release')

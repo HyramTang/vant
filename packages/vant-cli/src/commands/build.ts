@@ -12,7 +12,7 @@ import { compilePackage } from '../compiler/compile-package';
 import { genPackageEntry } from '../compiler/gen-package-entry';
 import { genStyleDepsMap } from '../compiler/gen-style-deps-map';
 import { genComponentStyle } from '../compiler/gen-component-style';
-import { SRC_DIR, LIB_DIR, ES_DIR } from '../common/constant';
+import { SRC_DIR, LIB_DIR, ES_DIR, getPackageJson, VETUR_DIR, ROOT_DIST_DIR } from '../common/constant';
 import { genPacakgeStyle } from '../compiler/gen-package-style';
 import { genVeturConfig } from '../compiler/gen-vetur-config';
 import {
@@ -51,7 +51,7 @@ async function compileDir(dir: string) {
   const files = readdirSync(dir);
 
   await Promise.all(
-    files.map(filename => {
+    files.map((filename) => {
       const filePath = join(dir, filename);
 
       if (isDemoDir(filePath) || isTestDir(filePath)) {
@@ -115,6 +115,19 @@ async function buildPackages() {
   genVeturConfig();
 }
 
+async function copyDist() {
+  const latestVersion = 'latest';
+  const version = getPackageJson().version as string;
+  await copy(ES_DIR, `${ROOT_DIST_DIR}/${latestVersion}/es`);
+  await copy(LIB_DIR, `${ROOT_DIST_DIR}/${latestVersion}/lib`);
+  await copy(VETUR_DIR, `${ROOT_DIST_DIR}/${latestVersion}/vetur`);
+  // await copy(join(ROOT, `types`), join(ROOT, `${ROOT_DIST_DIR}/${version}/types`));
+
+  if (!version.includes('-') && !version.includes('alpha')) {
+    await copy(`${ROOT_DIST_DIR}/${latestVersion}`, `dist/${version}`);
+  }
+}
+
 const tasks = [
   {
     text: 'Build ESModule Outputs',
@@ -160,7 +173,7 @@ async function runBuildTasks() {
 function watchFileChange() {
   consola.info('\nWatching file changes...');
 
-  chokidar.watch(SRC_DIR).on('change', async path => {
+  chokidar.watch(SRC_DIR).on('change', async (path) => {
     if (isDemoDir(path) || isTestDir(path)) {
       return;
     }
@@ -184,7 +197,7 @@ function watchFileChange() {
   });
 }
 
-export async function build(cmd: { watch?: boolean } = {}) {
+export async function build(cmd: { watch?: boolean; ci?: boolean } = {}) {
   setNodeEnv('production');
 
   try {
@@ -194,6 +207,10 @@ export async function build(cmd: { watch?: boolean } = {}) {
 
     if (cmd.watch) {
       watchFileChange();
+    }
+
+    if (cmd.ci) {
+      await copyDist();
     }
   } catch (err) {
     consola.error('Build failed');

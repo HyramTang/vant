@@ -5,6 +5,7 @@ import {
   DIST_DIR,
   VETUR_DIR,
   SITE_DIST_DIR,
+  ROOT_DIST_DIR,
 } from '../common/constant';
 
 export async function clean() {
@@ -14,5 +15,6 @@ export async function clean() {
     remove(DIST_DIR),
     remove(VETUR_DIR),
     remove(SITE_DIST_DIR),
+    remove(ROOT_DIST_DIR)
   ]);
 }

@@ -13,5 +13,8 @@ export async function release() {
       tagName: 'v${version}',
       commitMessage: 'chore: release ${version}',
     },
+    npm: {
+      skipChecks: true
+    }
   });
 }

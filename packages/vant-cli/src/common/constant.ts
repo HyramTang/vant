@@ -21,6 +21,7 @@ export const GREEN = '#07c160';
 // Root paths
 export const CWD = process.cwd();
 export const ROOT = findRootDir(CWD);
+export const ROOT_DIST_DIR = join(ROOT, 'dist');
 export const ES_DIR = join(ROOT, 'es');
 export const LIB_DIR = join(ROOT, 'lib');
 export const DOCS_DIR = join(ROOT, 'docs');

@@ -1,6 +1,7 @@
 {
-  "name": "@vant/cli",
-  "version": "2.11.1",
+  "name": "oa-vant-cli",
+  "version": "0.0.1",
+  "@vant/cli-version": "2.11.2",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -112,9 +113,10 @@
   "release-it": {
     "git": {
       "tag": false,
-      "commitMessage": "chore: release @vant/cli@${version}"
+      "commitMessage": "chore: release oa-vant-cli@${version}"
     },
     "npm": {
+      "skipChecks": "true",
       "tag": "latest-v2"
     }
   },
