@@ -4,6 +4,7 @@
       <van-tab :title="t('demo')">
         <demo-block :title="t('basicUsage')">
           <van-col span="6" @click="copy(demoIcon)">
+            <van-icon class-prefix="fa" name="wechat" />
             <van-icon :name="demoIcon" />
           </van-col>
           <van-col span="6" @click="copy(demoImage)">
@@ -13,6 +14,7 @@
 
         <demo-block :title="t('badge')">
           <van-col span="6" @click="copy(demoIcon, { dot: true })">
+            <van-icon class-prefix="fa" name="plane" />
             <van-icon :name="demoIcon" dot />
           </van-col>
           <van-col span="6" @click="copy(demoIcon, { badge: '9' })">
@@ -176,6 +178,7 @@ export default {
 
 <style lang="less">
 @import '../../style/var';
+@import url('https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
 
 .demo-icon {
   font-size: 0;
@@ -217,6 +220,10 @@ export default {
     margin: 20px;
     background-color: #fff;
     border-radius: 12px;
+  }
+
+  .fa {
+    font-size: 32px;
   }
 }
 </style>
