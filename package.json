@@ -1,5 +1,5 @@
 {
-  "name": "vant",
+  "name": "vant-oa",
   "version": "2.12.24",
   "description": "Mobile UI Components built on Vue",
   "main": "lib/index.js",
