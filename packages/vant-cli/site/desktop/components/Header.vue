@@ -48,8 +48,24 @@
             </span>
           </li>
 
-          <li v-if="langLabel && langLink" class="van-doc-header__top-nav-item">
-            <a class="van-doc-header__cube" :href="langLink">{{ langLabel }}</a>
+          <li ref="lang" class="van-doc-header__top-nav-item">
+            <span
+              class="van-doc-header__cube van-doc-header__version"
+              @click="toggleLanPop"
+            >
+              {{ langLabel }}
+              <transition name="van-doc-dropdown">
+                <div v-if="showLangPop" class="van-doc-header__version-pop">
+                  <a
+                    v-for="item in dropdownLang"
+                    class="van-doc-header__version-pop-item"
+                    :href="langLink(item.lang)"
+                  >
+                    {{ item.label }}
+                  </a>
+                </div>
+              </transition>
+            </span>
           </li>
         </ul>
       </div>
@@ -77,25 +93,17 @@ export default {
   data() {
     return {
       showVersionPop: false,
+      showLangPop: false,
     };
   },
 
   computed: {
-    langLink() {
-      return `#${this.$route.path.replace(this.lang, this.anotherLang.lang)}`;
-    },
-
     langLabel() {
-      return this.anotherLang.label;
+      return this.langConfigs.find((item) => item.lang === this.lang).label;
     },
 
-    anotherLang() {
-      const items = this.langConfigs.filter((item) => item.lang !== this.lang);
-      if (items.length) {
-        return items[0];
-      }
-
-      return {};
+    dropdownLang() {
+      return this.langConfigs.filter((item) => item.lang !== this.lang);
     },
 
     searchConfig() {
@@ -116,20 +124,35 @@ export default {
       this.showVersionPop = val;
     },
 
+    toggleLanPop() {
+      const val = !this.showLangPop;
+
+      const action = val ? 'add' : 'remove';
+      document.body[`${action}EventListener`](
+        'click',
+        this.checkHideVersionPop
+      );
+
+      this.showLangPop = val;
+    },
+
     checkHideVersionPop(event) {
       if (!this.$refs.version.contains(event.target)) {
         this.showVersionPop = false;
       }
-    },
-
-    onSwitchLang(lang) {
-      this.$router.push(this.$route.path.replace(lang.from, lang.to));
+      if (!this.$refs.lang.contains(event.target)) {
+        this.showLangPop = false;
+      }
     },
 
     onSwitchVersion(version) {
       if (version.link) {
         location.href = version.link;
       }
+    },
+
+    langLink(lang) {
+      return `#${this.$route.path.replace(this.lang, lang)}`;
     },
   },
 };
@@ -259,6 +282,10 @@ export default {
         transform: scale(1.2);
       }
     }
+  }
+
+  &__version-pop-item {
+    color: unset;
   }
 }
 
