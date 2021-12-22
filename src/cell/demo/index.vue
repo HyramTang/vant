@@ -38,7 +38,7 @@
 
     <demo-block :title="t('router')">
       <van-cell :title="t('urlRoute')" is-link url="/vant/mobile.html" />
-      <van-cell :title="t('vueRoute')" is-link to="index" />
+      <van-cell :title="t('vueRoute')" is-link :to="{ name: 'test' }" />
     </demo-block>
 
     <demo-block :title="t('groupTitle')">
@@ -77,6 +77,8 @@
 </template>
 
 <script>
+import TestView from './test.vue';
+
 export default {
   i18n: {
     'zh-CN': {
@@ -107,6 +109,18 @@ export default {
       useSlots: 'Use Slots',
       verticalCenter: 'Vertical center',
     },
+  },
+  mounted() {
+    console.log(this.$router);
+    // const { routes } = this.$router;
+    this.$router.addRoutes([
+      {
+        name: 'test',
+        path: `/zh-CN/test-page`,
+        component: TestView,
+        meta: { lang: 'zh-CN', sync: false },
+      },
+    ]);
   },
 };
 </script>

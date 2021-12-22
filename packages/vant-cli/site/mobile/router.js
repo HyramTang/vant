@@ -89,8 +89,8 @@ export const router = new VueRouter({
   scrollBehavior: (to, from, savedPosition) => savedPosition || { x: 0, y: 0 },
 });
 
-router.afterEach(() => {
-  if (!router.currentRoute.redirectedFrom) {
+router.afterEach((to) => {
+  if (!router.currentRoute.redirectedFrom && (to.meta.sync ?? true)) {
     syncPathToParent();
   }
 });
